@@ -1,22 +1,13 @@
 -- -----------------------------------------------------
--- ESQUEMA DE BASE DE DATOS NOMINADB - CON RESTRICCIONES CASCADA
---
--- Se mantienen todas las restricciones de Foreign Key (FK) para
--- asegurar la integridad referencial.
--- La cláusula 'ON DELETE NO ACTION' ha sido reemplazada por
--- 'ON DELETE CASCADE' en TODAS las FKs para permitir la eliminación
--- de registros padres sin restricciones, eliminando automáticamente
--- todos los registros hijos relacionados.
+-- 1. CONFIGURACIÓN INICIAL Y LIMPIEZA
 -- -----------------------------------------------------
 
--- 1. CONFIGURACIÓN INICIAL Y LIMPIEZA
--- Estos comandos se relajan para permitir flexibilidad
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
--- Comando para que puedas borrar la base de datos si es necesario (si tienes los privilegios)
-DROP DATABASE IF EXISTS `nominadb`;
+-- Si la base de datos ya existe y quieres empezar desde cero, descomenta la siguiente línea:
+-- DROP DATABASE IF EXISTS `nominadb`;
 
 -- Crear Esquema
 CREATE SCHEMA IF NOT EXISTS `nominadb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
@@ -120,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`CONCEPTO` (
   CONSTRAINT `fk_CONCEPTO_FORMULA1`
     FOREIGN KEY (`FORMULA_id_formula`)
     REFERENCES `nominadb`.`FORMULA` (`id_formula`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -141,8 +132,8 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`RELACION_LABORAL` (
   CONSTRAINT `fk_RELACION_LABORAL_EMPLEADO1`
     FOREIGN KEY (`EMPLEADO_id_empleado`)
     REFERENCES `nominadb`.`EMPLEADO` (`id_empleado`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -159,8 +150,8 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`ORGANIZACION` (
   CONSTRAINT `fk_ORGANIZACION_RELACION_LABORAL1`
     FOREIGN KEY (`RELACION_LABORAL_id_relacion_laboral`)
     REFERENCES `nominadb`.`RELACION_LABORAL` (`id_relacion_laboral`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -178,8 +169,8 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`GRUPOS_BANCO` (
   CONSTRAINT `fk_GRUPOS_BANCO_BANCO1`
     FOREIGN KEY (`id_banco_FK`)
     REFERENCES `nominadb`.`BANCO` (`id_banco`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -193,8 +184,8 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`NOMINA_PPD` (
   CONSTRAINT `fk_NOMINA_PPD_TIPOS_NOMINA1`
     FOREIGN KEY (`TIPOS_NOMINA_id_tipos_nomina`)
     REFERENCES `nominadb`.`TIPOS_NOMINA` (`id_tipos_nomina`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -216,18 +207,18 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`CONSTANTE` (
   CONSTRAINT `fk_CONSTANTE_FORMULA1`
     FOREIGN KEY (`FORMULA_id_formula`)
     REFERENCES `nominadb`.`FORMULA` (`id_formula`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE, -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_CONSTANTE_PARAMETRO_BONO1`
     FOREIGN KEY (`PARAMETRO_BONO_id_parametro_bono`)
     REFERENCES `nominadb`.`PARAMETRO_BONO` (`id_parametro_bono`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE, -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_CONSTANTE_CONSTANTE_GLOBAL1`
     FOREIGN KEY (`CONSTANTE_GLOBAL_id_constante_global`)
     REFERENCES `nominadb`.`CONSTANTE_GLOBAL` (`id_constante_global`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -243,8 +234,8 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`CONSTANTE_CONCEPTO` (
   CONSTRAINT `fk_CONSTANTE_CONCEPTO_CONSTANTE1`
     FOREIGN KEY (`CONSTANTE_id_constante`)
     REFERENCES `nominadb`.`CONSTANTE` (`id_constante`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -263,13 +254,13 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`CONSTANTE_CONTRACTO` (
   CONSTRAINT `fk_CONSTANTE_CONTRACTO_CONSTANTE1`
     FOREIGN KEY (`CONSTANTE_id_constante`)
     REFERENCES `nominadb`.`CONSTANTE` (`id_constante`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE, -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_CONSTANTE_CONTRACTO_EMPLEADO1`
     FOREIGN KEY (`EMPLEADO_id_empleado`)
     REFERENCES `nominadb`.`EMPLEADO` (`id_empleado`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -287,8 +278,8 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`DOTACION_LABORAL` (
   CONSTRAINT `fk_DOTACION_LABORAL_EMPLEADO1`
     FOREIGN KEY (`EMPLEADO_id_empleado`)
     REFERENCES `nominadb`.`EMPLEADO` (`id_empleado`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -310,8 +301,8 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`ESCALA_PARA_CALCULAR_VACACIONES` (
   CONSTRAINT `fk_ESCALA_PARA_CALCULAR_VACACIONES_PARAMETRO_VACACIONE1`
     FOREIGN KEY (`PARAMETRO_VACACIONE_id_parametros_vacaciones` , `PARAMETRO_VACACIONE_antigueda_derechos_año` , `PARAMETRO_VACACIONE_nro_dias_disfrute` , `PARAMETRO_VACACIONE_dias_incremento_disfrute_años` , `PARAMETRO_VACACIONE_fecha_dd_aplicacion_incremento` , `PARAMETRO_VACACIONE_tipo_disfrute_continuo` , `PARAMETRO_VACACIONE_dias_habiles`)
     REFERENCES `nominadb`.`PARAMETRO_VACACIONE` (`id_parametros_vacaciones` , `antigueda_derechos_año` , `nro_dias_disfrute` , `dias_incremento_disfrute_años` , `fecha_dd_aplicacion_incremento` , `tipo_disfrute_continuo` , `dias_habiles`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -328,27 +319,27 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`NOMINA_DETALLE` (
   `NOMINA_PERIODO_id_tipo_nomina` INT NOT NULL,
   `nro_periodo` INT NOT NULL,
   `PAGO_id_pago` INT NOT NULL, -- Columna INT, NO AÑADIMOS LA FK AQUÍ
-  `CONCEPTO_id_concepto` VARCHAR(45) NOT NULL,
+  `CONCEPTO_id_concepto` VARCHAR(45) NOT NULL, 
   PRIMARY KEY (`id_detalle`),
   INDEX `fk_NOMINA_DETALLE_NOMINA_PPD1_idx` (`NOMINA_PERIODO_id_tipo_nomina` ASC),
   INDEX `fk_NOMINA_DETALLE_EMPLEADO1_idx` (`id_empleado_FK` ASC),
-
+  
   -- FK a tablas ya creadas
   CONSTRAINT `fk_NOMINA_DETALLE_NOMINA_PPD1`
     FOREIGN KEY (`NOMINA_PERIODO_id_tipo_nomina`)
     REFERENCES `nominadb`.`NOMINA_PPD` (`id_tipo_nomina`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE, -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_NOMINA_DETALLE_EMPLEADO1`
     FOREIGN KEY (`id_empleado_FK`)
     REFERENCES `nominadb`.`EMPLEADO` (`id_empleado`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE, -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_NOMINA_DETALLE_CONCEPTO1`
     FOREIGN KEY (`CONCEPTO_id_concepto`)
     REFERENCES `nominadb`.`CONCEPTO` (`id_concepto`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -360,13 +351,13 @@ CREATE TABLE IF NOT EXISTS `nominadb`.`PAGOS_NOMINA` (
   `monto` DECIMAL(10,2) NOT NULL,
   `NOMINA_DETALLE_id_detalle` INT NOT NULL,
   PRIMARY KEY (`id_pagos_nomina`),
-
+  
   -- FK de PAGOS_NOMINA a NOMINA_DETALLE (esta referencia ya funciona)
   CONSTRAINT `fk_PAGOS_NOMINA_NOMINA_DETALLE1`
     FOREIGN KEY (`NOMINA_DETALLE_id_detalle`)
     REFERENCES `nominadb`.`NOMINA_DETALLE` (`id_detalle`)
-    ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-    ON UPDATE CASCADE -- Cambiado de NO ACTION a CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 )
 ENGINE = InnoDB;
 
@@ -377,9 +368,9 @@ ALTER TABLE `nominadb`.`NOMINA_DETALLE`
 ADD INDEX `fk_NOMINA_DETALLE_PAGOS_NOMINA1_idx` (`PAGO_id_pago` ASC),
 ADD CONSTRAINT `fk_NOMINA_DETALLE_PAGOS_NOMINA1`
   FOREIGN KEY (`PAGO_id_pago`)
-  REFERENCES `nominadb`.`PAGOS_NOMINA` (`id_pago`)
-  ON DELETE CASCADE -- Cambiado de NO ACTION a CASCADE
-  ON UPDATE CASCADE; -- Cambiado de NO ACTION a CASCADE
+  REFERENCES `nominadb`.`PAGOS_NOMINA` (`id_pago`) 
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
 
 
 -- -----------------------------------------------------
