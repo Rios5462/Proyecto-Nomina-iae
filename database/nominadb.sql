@@ -26,6 +26,14 @@ USE `nominadb` ;
 -- 2. CREACIÓN DE TABLAS PADRE SIN DEPENDENCIAS DE FK (O SOLO A OTRAS PADRE)
 -- -----------------------------------------------------
 
+
+-- Tabla `tipo_nominas` (para especificar que tipo de nomina es. ej: empleado,docente,obrero, etc)
+CREATE TABLE IF NOT EXISTS `nominadb`.`tipo_nominas` (
+`ìd` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+`descripcion_nomina` VARCHAR(100) NOT NULL,
+PRIMARY KEY (`ìd`)
+);
+
 -- Table `EMPLEADO` (Padre Principal)
 CREATE TABLE IF NOT EXISTS `nominadb`.`EMPLEADO` (
   `id_empleado` INT NOT NULL AUTO_INCREMENT,

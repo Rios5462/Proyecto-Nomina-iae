@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\TipoNominaController;
 
 
 Route::get('/', function () {
@@ -19,3 +20,5 @@ Route::resource('empleados', EmpleadoController::class);
 
 // 3. Ruta para mostrar la lista de todos los empleados
 //Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados.index');
+
+Route::resource('tipo_nominas', TipoNominaController::class);
