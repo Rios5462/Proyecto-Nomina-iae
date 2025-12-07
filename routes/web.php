@@ -5,6 +5,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\TipoNominaController;
 use App\Http\Controllers\TipoFrecuenciaPagoController;
 use App\Http\Controllers\TipoAcumuladosController;
+use App\Http\Controllers\TipoLiquidacionController;
 
 
 Route::get('/', function () {
@@ -28,3 +29,6 @@ Route::resource('tipo_nominas', TipoNominaController::class);
 Route::resource('tipo_frecuencia_pagos' , TipoFrecuenciaPagoController::class);
 
 Route::resource('tipo_acumulados' , TipoAcumuladosController::class);
+
+Route::resource('tipo_Liquidacion', TipoLiquidacionController::class);
+
