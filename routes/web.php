@@ -6,7 +6,7 @@ use App\Http\Controllers\TipoNominaController;
 use App\Http\Controllers\TipoFrecuenciaPagoController;
 use App\Http\Controllers\TipoAcumuladosController;
 use App\Http\Controllers\TipoLiquidacionController;
-
+use App\Http\Controllers\TipoAusenciaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,3 +32,4 @@ Route::resource('tipo_acumulados' , TipoAcumuladosController::class);
 
 Route::resource('tipo_Liquidacion', TipoLiquidacionController::class);
 
+Route::resource('tipo_ausencia', TipoAusenciaController::class);
