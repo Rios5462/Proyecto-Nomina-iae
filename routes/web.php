@@ -8,6 +8,8 @@ use App\Http\Controllers\TipoAcumuladosController;
 use App\Http\Controllers\TipoPrestamoController;
 use App\Http\Controllers\TipoAumentoController;
 use App\Http\Controllers\GuarderiaController;
+use App\Http\Controllers\TipoLiquidacionController;
+use App\Http\Controllers\TipoAusenciaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,3 +46,6 @@ Route::resource('tipos_Aumentos', TipoAumentoController::class);
 
 // Nombre de recurso: 'guarderias'
 Route::resource('Guarderias', GuarderiaController::class);
+Route::resource('tipo_Liquidacion', TipoLiquidacionController::class);
+
+Route::resource('tipo_ausencia', TipoAusenciaController::class);
