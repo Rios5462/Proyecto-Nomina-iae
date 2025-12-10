@@ -10,7 +10,9 @@ use App\Http\Controllers\TipoAumentoController;
 use App\Http\Controllers\GuarderiaController;
 use App\Http\Controllers\TipoLiquidacionController;
 use App\Http\Controllers\TipoAusenciaController;
-
+use App\Http\Controllers\GrupoBancoController;
+use App\Http\Controllers\BancoController;
+use App\Http\Controllers\TasaInteresController;
 Route::get('/', function () {
     return view('layouts.pantalla_principal');
 });
@@ -49,3 +51,14 @@ Route::resource('Guarderias', GuarderiaController::class);
 Route::resource('tipo_Liquidacion', TipoLiquidacionController::class);
 
 Route::resource('tipo_ausencia', TipoAusenciaController::class);
+
+// Usando la ruta 'grupos_bancos' para el recurso RESTful
+Route::resource('grupo_bancos', GrupoBancoController::class);
+
+
+// Usando la ruta 'bancos' para el recurso
+Route::resource('bancos', BancoController::class);
+
+
+// Usando la ruta 'tasas_interes' para el recurso
+Route::resource('tasas_interes', TasaInteresController::class);
