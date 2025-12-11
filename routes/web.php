@@ -10,6 +10,14 @@ use App\Http\Controllers\TipoAumentoController;
 use App\Http\Controllers\GuarderiaController;
 use App\Http\Controllers\TipoLiquidacionController;
 use App\Http\Controllers\TipoAusenciaController;
+/// niveles funcionales//
+use App\Http\Controllers\PresupuestoController;
+use App\Http\Controllers\DireccionController;
+use App\Http\Controllers\DepartamentoController;
+
+
+
+
 use App\Http\Controllers\GrupoBancoController;
 use App\Http\Controllers\BancoController;
 use App\Http\Controllers\TasaInteresController;
@@ -50,6 +58,10 @@ Route::resource('tipo_Aumentos', TipoAumentoController::class);
 Route::resource('Guarderias', GuarderiaController::class);
 Route::resource('tipo_Liquidacion', TipoLiquidacionController::class);
 
+//niveles funcionales//
+Route::resource('presupuesto', PresupuestoController::class);
+Route::resource('direcciones', DireccionController::class);
+Route::resource('departamentos', DepartamentoController::class);
 Route::resource('tipo_ausencia', TipoAusenciaController::class);
 
 // Usando la ruta 'grupos_bancos' para el recurso RESTful
