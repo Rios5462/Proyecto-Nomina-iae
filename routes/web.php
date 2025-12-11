@@ -26,6 +26,8 @@ use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\GrupoBancoController;
 use App\Http\Controllers\BancoController;
 use App\Http\Controllers\TasaInteresController;
+
+
 Route::get('/', function () {
     return view('layouts.pantalla_principal');
 });
