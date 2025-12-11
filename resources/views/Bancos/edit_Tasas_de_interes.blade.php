@@ -1,0 +1,58 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1 class="mb-4">Modificando registro (Editar Tasa ID: {{ $tasa->id }})</h1>
+    
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('tasas_interes.update', $tasa->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        {{-- Campos: Año, Mes, Tasa --}}
+        <div class="row">
+            {{-- Año --}}
+            <div class="col-md-4 mb-3">
+                <label for="año" class="form-label">Año:</label>
+                <input type="number" class="form-control" id="año" name="año" 
+                       value="{{ old('año', $tasa->año) }}" required min="1900" max="2100">
+            </div>
+            
+            {{-- Mes (Dropdown para mejor usabilidad) --}}
+            <div class="col-md-4 mb-3">
+                <label for="mes" class="form-label">Mes:</label>
+                <select class="form-select" id="mes" name="mes" required>
+                    @for ($i = 1; $i <= 12; $i++)
+                        <option value="{{ $i }}" {{ old('mes', $tasa->mes) == $i ? 'selected' : '' }}>
+                            {{ DateTime::createFromFormat('!m', $i)->format('F') }}
+                        </option>
+                    @endfor
+                </select>
+            </div>
+
+            {{-- Tasa --}}
+            <div class="col-md-4 mb-3">
+                <label for="tasa" class="form-label">Tasa (%):</label>
+                <input type="number" step="0.01" class="form-control" id="tasa" name="tasa" 
+                       value="{{ old('tasa', number_format($tasa->tasa, 2, '.', '')) }}" required min="0" max="100">
+                <div class="form-text">Ejemplo: 10.50 para 10.50%</div>
+            </div>
+        </div>
+        
+        {{-- Botones Inferiores (Aceptar y Cancelar) --}}
+        <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="btn btn-success me-2">Aceptar</button>
+            <a href="{{ route('tasas_interes.index') }}" class="btn btn-danger">Cancelar</a>
+        </div>
+    </form>
+</div>
+@endsection

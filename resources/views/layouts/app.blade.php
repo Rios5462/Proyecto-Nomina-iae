@@ -25,12 +25,56 @@
 
                         {{-- Opción 1: Sin Submenú --}}
                         <li><a class="dropdown-item" href="#">Opción 1: Usuarios</a></li>
+            {{-- Opción 1: Sin Submenú --}}
+            <li><a class="dropdown-item" href="#">Opción 1: Usuarios</a></li>
+             
+            
+            
+            {{-- SEPARADOR --}}
+            <li><hr class="dropdown-divider"></li>
+            
+            {{-- **OPCIÓN 2: Niveles Funcionales (CON SUBMENÚ DESPLEGABLE)** --}}
+            <li class="nav-item dropend">
+                <a class="dropdown-item dropdown-toggle" href="#" id="submenuTipos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    ✨ **2. Niveles Funcionales**
+                </a>
+                {{-- Contenedor del Submenú --}}
+                <ul class="dropdown-menu" aria-labelledby="submenuTipos">
+                    {{-- Rutas Solicitadas --}}
+                    <li><h6 class="dropdown-header"> Gestionar Niveles Funcionales </h6></li>
+                    <li><a class="dropdown-item" href="{{ route('presupuesto.index') }}">Presupuesto</a></li>
+                    <li><a class="dropdown-item" href="{{ route('direcciones.index') }}">Direcciones</a></li>
+                    <li><a class="dropdown-item" href="{{ route('departamentos.index') }}">Departamentos</a></li>
+                    
+                </ul>
+            </li>
+
 
                         {{-- Opción 2: Sin Submenú --}}
                         <li><a class="dropdown-item" href="#">Opción 2: Perfiles</a></li>
 
                         {{-- SEPARADOR --}}
                         <li><hr class="dropdown-divider"></li>
+            {{-- **OPCIÓN 3: TIPOS (CON SUBMENÚ DESPLEGABLE)** --}}
+            <li class="nav-item dropend">
+                <a class="dropdown-item dropdown-toggle" href="#" id="submenuTipos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    ✨ Tipos
+                </a>
+                {{-- Contenedor del Submenú --}}
+                <ul class="dropdown-menu" aria-labelledby="submenuTipos">
+                    {{-- Rutas Solicitadas --}}
+                    <li><h6 class="dropdown-header">Gestionar Tipos</h6></li>
+                    <li><a class="dropdown-item" href="{{ route('tipo_nominas.index') }}">Tipo de Nóminas</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tipo_frecuencia_pagos.index') }}">Tipo de Frecuencias de Pago</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tipo_acumulados.index') }}">Tipo de Acumulados</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tipo_ausencias.index') }}">Tipo de Ausencias</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tipo_prestamos.index') }}">Tipo de Prestamos</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tipo_Aumentos.index') }}">Tipo de Aumentos</a></li>
+                    <li><a class="dropdown-item" href="{{ route('Guarderias.index') }}">Tipo de Guarderias</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tipo_Liquidacion.index') }}">Tipo de Liquidaciones</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tipo_ausencias.index') }}">Tipo de Ausencias</a></li>
+                </ul>
+            </li>
 
                         {{-- **OPCIÓN 3: TIPOS (CON SUBMENÚ DESPLEGABLE)** --}}
                         <li class="nav-item dropend">
@@ -80,6 +124,43 @@
                     </ul>
                 </div>
                 
+            {{-- Opciones Restantes (4 a 10) --}}
+            <li><a class="dropdown-item" href="#">Opción 4: Monedas</a></li>
+
+            {{-- SEPARADOR --}}
+            <li><hr class="dropdown-divider"></li>
+            
+            {{-- **MENÚ DESPLEGABLE: GRUPO DE BANCOS (usando la estructura dropend)** --}}
+<li class="nav-item dropend">
+    <a class="nav-link dropdown-toggle" href="#" id="submenuGrupoBancos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              🏦 Bancos
+    </a>
+    {{-- Contenedor del Submenú --}}
+    <ul class="dropdown-menu" aria-labelledby="submenuGrupoBancos">
+        
+        <li><h6 class="dropdown-header">Gestión de Grupos Bancarios</h6></li>
+        
+        {{-- Enlace principal: Gestión de Grupos Bancarios --}}
+        
+        <li><hr class="dropdown-divider"></li>
+        
+        {{-- Rutas de ejemplo (todas apuntando al índice principal de Grupos Bancos por falta de rutas específicas) --}}
+        <li><a class="dropdown-item" href="{{ route('grupo_bancos.index') }}">Grupos Bancos</a></li>
+        <li><a class="dropdown-item" href="{{ route('bancos.index') }}">Bancos</a></li>
+        <li><a class="dropdown-item" href="{{ route('tasas_interes.index') }}"> Tasas de Interés</a></li>
+        
+    </ul>
+</li>
+            <li><a class="dropdown-item" href="#">Opción 6: Puestos</a></li>
+            <li><a class="dropdown-item" href="#">Opción 7: Países</a></li>
+            <li><a class="dropdown-item" href="#">Opción 8: Ciudades</a></li>
+            <li><a class="dropdown-item" href="#">Opción 9: Permisos</a></li>
+            <li><a class="dropdown-item" href="#">Opción 10: Logs</a></li>
+        </ul>
+    </div>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
                 <a class="navbar-brand" href="{{ url('/empleados') }}">
                     Proyecto Nómina
                 </a>

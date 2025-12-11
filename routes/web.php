@@ -15,7 +15,17 @@ use App\Http\Controllers\CargosController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\TabuladorCategoriasController;
 
+/// niveles funcionales//
+use App\Http\Controllers\PresupuestoController;
+use App\Http\Controllers\DireccionController;
+use App\Http\Controllers\DepartamentoController;
 
+
+
+
+use App\Http\Controllers\GrupoBancoController;
+use App\Http\Controllers\BancoController;
+use App\Http\Controllers\TasaInteresController;
 Route::get('/', function () {
     return view('layouts.pantalla_principal');
 });
@@ -54,3 +64,20 @@ Route::resource('cargos', CargosController::class);
 Route::resource('categorias', CategoriasController::class);
 Route::resource('tabulador_categorias', TabuladorCategoriasController::class);
 //
+
+//niveles funcionales//
+Route::resource('presupuesto', PresupuestoController::class);
+Route::resource('direcciones', DireccionController::class);
+Route::resource('departamentos', DepartamentoController::class);
+Route::resource('tipo_ausencia', TipoAusenciaController::class);
+
+// Usando la ruta 'grupos_bancos' para el recurso RESTful
+Route::resource('grupo_bancos', GrupoBancoController::class);
+
+
+// Usando la ruta 'bancos' para el recurso
+Route::resource('bancos', BancoController::class);
+
+
+// Usando la ruta 'tasas_interes' para el recurso
+Route::resource('tasas_interes', TasaInteresController::class);
