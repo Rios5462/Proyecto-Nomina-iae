@@ -28,12 +28,12 @@
                     <td>{{ $categoria->descripcion }}</td>
                     <td class="d-flex justify-content-center">
                         {{-- BOTÓN DE ACTUALIZAR (EDITAR) --}}
-                        <a href="{{ route('tipo_frecuencia_pagos.edit', $frecuencia) }}" class="btn btn-sm btn-primary me-2" title="Editar">
+                        <a href="{{ route('categorias.edit', $categoria) }}" class="btn btn-sm btn-primary me-2" title="Editar">
                             <i class="fas fa-edit"></i> Editar
                         </a>
     
                         {{-- BOTÓN DE ELIMINAR (usando un formulario POST para seguridad) --}}
-                        <form action="{{ route('tipo_frecuencia_pagos.destroy', $frecuencia->id) }}" method="POST" onsubmit="return confirm('¿Está seguro de que desea eliminar este registro?');">
+                        <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" onsubmit="return confirm('¿Está seguro de que desea eliminar este registro?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" title="Eliminar">

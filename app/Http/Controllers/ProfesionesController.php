@@ -51,24 +51,37 @@ class ProfesionesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Profesiones $profesion)
     {
-        //
+        return view('PCC.edit_profesiones', compact('profesion'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Profesiones $profesion)
     {
-        //
-    }
+        $request->validate([
+            'descripcion' => 'required|string|max:100|unique:profesiones,descripcion,' . $profesion->id,
+        ]);
+
+        $profesion->update($request->all());
+
+        return redirect()->route('profesiones.index')
+                         ->with('success', 'Profesión actualizada correctamente');
+    }   
+   
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Profesiones $profesiones)
     {
-        //
+        // Elimina el registro de la base de datos
+        $profesiones->delete();
+        
+        // Redirecciona de vuelta al listado con un mensaje de éxito.
+        return redirect()->route('profesinoes.index')
+                         ->with('success', 'Profesion eliminada con éxito!');
     }
 }

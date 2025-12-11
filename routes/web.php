@@ -46,7 +46,10 @@ Route::resource('tipo_ausencia', TipoAusenciaController::class);
 //
 
 //Rutas para Profesiones - Cargos - Categorias
-Route::resource('profesiones', ProfesionesController::class);
+Route::resource('profesiones', ProfesionesController::class)->parameters([
+    // Mapea la ruta de 'profesione' a la variable de 'profesion'
+    'profesiones' => 'profesion', 
+]);
 Route::resource('cargos', CargosController::class);
 Route::resource('categorias', CategoriasController::class);
 Route::resource('tabulador_categorias', TabuladorCategoriasController::class);

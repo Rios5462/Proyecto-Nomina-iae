@@ -51,24 +51,37 @@ class CargosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Cargos $cargo)
     {
-        //
+        return view('PCC.edit_cargos', compact('cargo'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Cargos $cargo)
     {
-        //
+        
+        $request->validate([
+            'descripcion' => 'required|string|max:100|unique:cargos,descripcion,' . $cargo->id,
+        ]);
+        
+        $cargo->update($request->all());
+
+        return redirect()->route('cargos.index')
+                         ->with('success', 'Cargo actualizado correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Cargos $cargo)
     {
-        //
+        // Elimina el registro de la base de datos
+        $cargo->delete();
+        
+        // Redirecciona de vuelta al listado con un mensaje de éxito.
+        return redirect()->route('cargos.index')
+                         ->with('success', 'cargo eliminado con éxito!');
     }
 }
