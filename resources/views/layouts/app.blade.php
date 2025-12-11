@@ -50,7 +50,7 @@
             {{-- **OPCIÓN 3: TIPOS (CON SUBMENÚ DESPLEGABLE)** --}}
             <li class="nav-item dropend">
                 <a class="dropdown-item dropdown-toggle" href="#" id="submenuTipos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    ✨ **3. Tipos**
+                    ✨ Tipos
                 </a>
                 {{-- Contenedor del Submenú --}}
                 <ul class="dropdown-menu" aria-labelledby="submenuTipos">
@@ -73,7 +73,31 @@
 
             {{-- Opciones Restantes (4 a 10) --}}
             <li><a class="dropdown-item" href="#">Opción 4: Monedas</a></li>
-            <li><a class="dropdown-item" href="#">Opción 5: Departamentos</a></li>
+
+            {{-- SEPARADOR --}}
+            <li><hr class="dropdown-divider"></li>
+            
+            {{-- **MENÚ DESPLEGABLE: GRUPO DE BANCOS (usando la estructura dropend)** --}}
+<li class="nav-item dropend">
+    <a class="nav-link dropdown-toggle" href="#" id="submenuGrupoBancos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              🏦 Bancos
+    </a>
+    {{-- Contenedor del Submenú --}}
+    <ul class="dropdown-menu" aria-labelledby="submenuGrupoBancos">
+        
+        <li><h6 class="dropdown-header">Gestión de Grupos Bancarios</h6></li>
+        
+        {{-- Enlace principal: Gestión de Grupos Bancarios --}}
+        
+        <li><hr class="dropdown-divider"></li>
+        
+        {{-- Rutas de ejemplo (todas apuntando al índice principal de Grupos Bancos por falta de rutas específicas) --}}
+        <li><a class="dropdown-item" href="{{ route('grupo_bancos.index') }}">Grupos Bancos</a></li>
+        <li><a class="dropdown-item" href="{{ route('bancos.index') }}">Bancos</a></li>
+        <li><a class="dropdown-item" href="{{ route('tasas_interes.index') }}"> Tasas de Interés</a></li>
+        
+    </ul>
+</li>
             <li><a class="dropdown-item" href="#">Opción 6: Puestos</a></li>
             <li><a class="dropdown-item" href="#">Opción 7: Países</a></li>
             <li><a class="dropdown-item" href="#">Opción 8: Ciudades</a></li>

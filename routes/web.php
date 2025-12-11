@@ -18,6 +18,9 @@ use App\Http\Controllers\DepartamentoController;
 
 
 
+use App\Http\Controllers\GrupoBancoController;
+use App\Http\Controllers\BancoController;
+use App\Http\Controllers\TasaInteresController;
 Route::get('/', function () {
     return view('layouts.pantalla_principal');
 });
@@ -59,3 +62,15 @@ Route::resource('tipo_Liquidacion', TipoLiquidacionController::class);
 Route::resource('presupuesto', PresupuestoController::class);
 Route::resource('direcciones', DireccionController::class);
 Route::resource('departamentos', DepartamentoController::class);
+Route::resource('tipo_ausencia', TipoAusenciaController::class);
+
+// Usando la ruta 'grupos_bancos' para el recurso RESTful
+Route::resource('grupo_bancos', GrupoBancoController::class);
+
+
+// Usando la ruta 'bancos' para el recurso
+Route::resource('bancos', BancoController::class);
+
+
+// Usando la ruta 'tasas_interes' para el recurso
+Route::resource('tasas_interes', TasaInteresController::class);
