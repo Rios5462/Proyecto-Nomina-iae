@@ -10,6 +10,11 @@ use App\Http\Controllers\TipoAumentoController;
 use App\Http\Controllers\GuarderiaController;
 use App\Http\Controllers\TipoLiquidacionController;
 use App\Http\Controllers\TipoAusenciaController;
+use App\Http\Controllers\ProfesionesController;
+use App\Http\Controllers\CargosController;
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\TabuladorCategoriasController;
+
 /// niveles funcionales//
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\DireccionController;
@@ -37,26 +42,28 @@ Route::resource('empleados', EmpleadoController::class);
 // 3. Ruta para mostrar la lista de todos los empleados
 //Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados.index');
 
+
+//Rutas para Tipos
 Route::resource('tipo_nominas', TipoNominaController::class);
-
 Route::resource('tipo_frecuencia_pagos' , TipoFrecuenciaPagoController::class);
-
 Route::resource('tipo_acumulados' , TipoAcumuladosController::class);
-
 Route::resource('tipo_ausencias', TipoAusenciaController::class);
-
-// Ejemplo usando Resource (Recomendado)
 Route::resource('tipo_prestamos', TipoPrestamoController::class);
-
-
-// Usamos el nombre de recurso adaptado: 'tipos_aumentos'
 Route::resource('tipo_Aumentos', TipoAumentoController::class);
-
-
-
-// Nombre de recurso: 'guarderias'
 Route::resource('Guarderias', GuarderiaController::class);
 Route::resource('tipo_Liquidacion', TipoLiquidacionController::class);
+Route::resource('tipo_ausencia', TipoAusenciaController::class);
+//
+
+//Rutas para Profesiones - Cargos - Categorias
+Route::resource('profesiones', ProfesionesController::class)->parameters([
+    // Mapea la ruta de 'profesione' a la variable de 'profesion'
+    'profesiones' => 'profesion', 
+]);
+Route::resource('cargos', CargosController::class);
+Route::resource('categorias', CategoriasController::class);
+Route::resource('tabulador_categorias', TabuladorCategoriasController::class);
+//
 
 //niveles funcionales//
 Route::resource('presupuesto', PresupuestoController::class);

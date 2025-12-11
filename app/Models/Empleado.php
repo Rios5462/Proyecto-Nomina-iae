@@ -17,8 +17,18 @@ class Empleado extends Model
 
     // Campos que se pueden asignar masivamente (para cuando implementes el método store)
     protected $fillable = [
-        'nombre', 'id_cedula', 'sexo', 'fecha_nacimiento', 'lugar_nacimiento', 
-        'telefono', 'profesion', 'direccion', 'email', 'ficha', 'situacion', 'salario_base'
+        'nombre',
+        'id_cedula', 
+        'sexo', 
+        'fecha_nacimiento', 
+        'lugar_nacimiento', 
+        'telefono', 
+        'profesion', 
+        'direccion', 
+        'email', 
+        'ficha', 
+        'situacion', 
+        'salario_base'
     ];
     
     // Indicamos que no usamos las marcas de tiempo por defecto (created_at, updated_at)
