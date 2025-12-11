@@ -10,6 +10,11 @@ use App\Http\Controllers\TipoAumentoController;
 use App\Http\Controllers\GuarderiaController;
 use App\Http\Controllers\TipoLiquidacionController;
 use App\Http\Controllers\TipoAusenciaController;
+use App\Http\Controllers\ProfesionesController;
+use App\Http\Controllers\CargosController;
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\TabuladorCategoriasController;
+
 
 Route::get('/', function () {
     return view('layouts.pantalla_principal');
@@ -42,4 +47,7 @@ Route::resource('tipo_ausencia', TipoAusenciaController::class);
 
 //Rutas para Profesiones - Cargos - Categorias
 Route::resource('profesiones', ProfesionesController::class);
+Route::resource('cargos', CargosController::class);
+Route::resource('categorias', CategoriasController::class);
+Route::resource('tabulador_categorias', TabuladorCategoriasController::class);
 //

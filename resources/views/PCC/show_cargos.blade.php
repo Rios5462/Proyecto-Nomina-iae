@@ -2,16 +2,16 @@
 
 @section('content')
 <div class="container">
-    <h1>detalles de Profesiones</h1>
+    <h1>detalles de Cargos</h1>
 
     {{-- Botón de referencia a la otra vista --}}
-    <a href="{{ route('profesiones.create') }}" class="btn btn-success mb-3">
-        + Registrar Nueva Profesion
+    <a href="{{ route('cargos.create') }}" class="btn btn-success mb-3">
+        + Registrar Nuevo Cargo
     </a>
 
-    @if($profesiones->isEmpty())
+    @if($cargos->isEmpty())
         <div class="alert alert-warning">
-            Aún no hay Profesiones registradas.
+            Aún no hay cargos registradas.
         </div>
     @else
         <table class="table table-bordered table-striped">
@@ -22,10 +22,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($profesiones as $profesion)
+                @foreach ($cargos as $cargo)
                 <tr>
-                    <td>{{ $profesion->id }}</td>
-                    <td>{{ $profesion->descripcion }}</td>
+                    <td>{{ $cargo->id }}</td>
+                    <td>{{ $cargo->descripcion }}</td>
                     <td class="d-flex justify-content-center">
                         {{-- BOTÓN DE ACTUALIZAR (EDITAR) --}}
                         <a href="{{ route('tipo_frecuencia_pagos.edit', $frecuencia) }}" class="btn btn-sm btn-primary me-2" title="Editar">

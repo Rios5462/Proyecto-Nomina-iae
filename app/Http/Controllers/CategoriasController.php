@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profesiones;
+use App\Models\Categorias;
 use Illuminate\Http\Request;
 
-class ProfesionesController extends Controller
+class CategoriasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $profesiones = Profesiones::all();
+        $categorias = Categorias::all();
 
-        return view('PCC.show_profesiones', compact('profesiones'));
+        return view('PCC.show_categorias', compact('categorias'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ProfesionesController extends Controller
      */
     public function create()
     {
-        return view('PCC.profesiones');
+        return view('PCC.categorias');
     }
 
     /**
@@ -31,13 +31,8 @@ class ProfesionesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'descripcion' => 'required|string|max:100|unique:profesiones',
+            'descripcion' => 'required|string|max:100|unique:categorias'
         ]);
-
-        Profesiones::create($request->all());
-
-        return redirect()->route('profesiones.index')
-                         ->with('success', '¡Profesión registrada con éxito!');
     }
 
     /**

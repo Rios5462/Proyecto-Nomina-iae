@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profesiones;
+use App\Models\TabuladorCategorias;
 use Illuminate\Http\Request;
 
-class ProfesionesController extends Controller
+class TabuladorCategoriasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $profesiones = Profesiones::all();
+        $tabuladorCategorias = TabuladorCategorias::all();
 
-        return view('PCC.show_profesiones', compact('profesiones'));
+        return view('PCC.show_tabulador_categorias' , compact('tabuladorCategorias'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ProfesionesController extends Controller
      */
     public function create()
     {
-        return view('PCC.profesiones');
+        return view('PCC.tabulador_categorias');
     }
 
     /**
@@ -31,13 +31,11 @@ class ProfesionesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'descripcion' => 'required|string|max:100|unique:profesiones',
+            'grupo' => 'required|string|max:50|unique:tabulador_categorias',
+            'salario' => 'nullable|numeric',
+            'bono_mes' => 'nullable|numeric',   
+            'bono_dia' => 'nullable|numeric',
         ]);
-
-        Profesiones::create($request->all());
-
-        return redirect()->route('profesiones.index')
-                         ->with('success', '¡Profesión registrada con éxito!');
     }
 
     /**

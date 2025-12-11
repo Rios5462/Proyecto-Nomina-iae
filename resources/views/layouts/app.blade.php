@@ -67,10 +67,10 @@
                             <ul class="dropdown-menu" aria-labelledby="submenuTipos">
                                 {{-- Rutas Solicitadas --}}
                                 <li><h6 class="dropdown-header">Gestionar Tipos</h6></li>
-                                <li><a class="dropdown-item" href="{{ route('tipo_nominas.index') }}">Profesiones y Ocupaciones</a></li>
-                                <li><a class="dropdown-item" href="{{ route('tipo_frecuencia_pagos.index') }}">Cargos</a></li>
-                                <li><a class="dropdown-item" href="{{ route('tipo_acumulados.index') }}">Tabulador para Categorias</a></li>
-                                <li><a class="dropdown-item" href="{{ route('tipo_ausencias.index') }}">Categorias</a></li>
+                                <li><a class="dropdown-item" href="{{ route('profesiones.index') }}">Profesiones y Ocupaciones</a></li>
+                                <li><a class="dropdown-item" href="{{ route('cargos.index') }}">Cargos</a></li>
+                                <li><a class="dropdown-item" href="{{ route('tabulador_categorias.index') }}">Tabulador para Categorias</a></li>
+                                <li><a class="dropdown-item" href="{{ route('categorias.index') }}">Categorias</a></li>
                             </ul>
                         </li>
                         <li><a class="dropdown-item" href="#">Opción 7: Países</a></li>

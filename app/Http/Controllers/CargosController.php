@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profesiones;
+use App\Models\Cargos;
 use Illuminate\Http\Request;
 
-class ProfesionesController extends Controller
+class CargosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $profesiones = Profesiones::all();
+        $cargos = Cargos::all();
 
-        return view('PCC.show_profesiones', compact('profesiones'));
+        return view('PCC.show_cargos', compact('cargos'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ProfesionesController extends Controller
      */
     public function create()
     {
-        return view('PCC.profesiones');
+        return view('PCC.cargos');
     }
 
     /**
@@ -31,13 +31,13 @@ class ProfesionesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'descripcion' => 'required|string|max:100|unique:profesiones',
+            'descripcion' => 'required|string|max:100|unique:cargos',
         ]);
 
-        Profesiones::create($request->all());
+        Cargos::create($request->all());
 
-        return redirect()->route('profesiones.index')
-                         ->with('success', '¡Profesión registrada con éxito!');
+        return redirect()->route('cargos.index')
+                         ->with('success', '¡Cargo registrado con éxito!');
     }
 
     /**
